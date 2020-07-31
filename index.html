@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手写vue</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{son.name}} --- {{son.age}} --- {{son.desc}}</h2>
+    <p>{{text}}</p>
+    <div v-html="html"></div>
+    <div v-text="text"></div>
+    <input v-model="text" />
+    <input v-model="son.name" />
+    <button v-on:click="handleClick">button</button>
+    <button @click="handleClick">button</button>
+  </div>
+</body>
+<script src="./js/vue.js"></script>
+<!-- <script src="./js/my-vue.js"></script> -->
+<script src="./js/my-vue-again.js"></script>
+
+<script>
+  const vm = new MVue({
+    el: "#app",
+    data: {
+      son: {
+        name: '王达迅',
+        age: 9,
+        desc: '我是双打括号语法'
+      },
+      text: '我是v-text语法',
+      html: '<h3>我是v-html</h3>'
+    },
+    methods: {
+      handleClick() {
+        this.son.name = '王迅儿';
+        this.$data.text = '点击了按钮，我现在是被修改的v-text语法';
+      }
+    }
+  })
+</script>
+
+</html>
