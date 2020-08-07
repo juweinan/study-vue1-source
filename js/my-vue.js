@@ -11,6 +11,7 @@ class Watcher {
   getOldVal() {
     // 获取旧值之前先把watcher实例放在Dep的targer属性上
     Dep.target = this;
+    // 获取旧值时回走到数据劫持中的get方法中，此时当前实例已经被添加到Dep.target属性上，所以可以在get中直接push
     const oldVal = compileUtils.getValue(this.expr, this.vm);
     // 获取完旧值之后，整个构造器中的内容都被放在了Dep属性上，所以要重置才不会影响下一次创建watcher
     Dep.target = null;
