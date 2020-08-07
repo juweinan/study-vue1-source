@@ -1,0 +1,33 @@
+# hand-write-vue
+Vue学习进阶，目前只实现了v-text、v-html、v-model、v-on、@、{{}}等指令
+
+
+### nodeType
+
+用于判断当前节点是否为node节点，如果是则返回1，反之为undefined
+
+用法：dom.nodeType
+
+### firstChild
+
+用于取出当前节点的第一个子节点
+
+用法：dom.firstChild
+
+### appendChild
+
+用于将某些节点添加到父级节点元素中
+
+用法：father.appendChild(child)
+
+### childNodes
+
+用于获取指定节点下的所有子节点
+
+### 面试题
+
+阐述一下你所理解的MVVM响应式原理
+
+vue是采用数据劫持配合发布者-订阅者模式的方式，通过 `Object.defineProperty()` 来劫持data中的各个属性的getter和setter，在数据发生变化时，发布消息给订阅者，去通知观察者，作出对应的回调函数，去更新视图。
+
+MVVM作为绑定的入口，整合Observer，Compile和Watcher三者，通过Observer来监听model数据变化，通过Compile来编译解析模版指令，最终利用Watcher搭起Observer，Compile之间的通信桥梁，达到数据变化=>视图更新、视图交互变化=>数据变化的双向绑定效果。
